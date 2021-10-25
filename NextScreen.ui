@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Playlistical</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="sources.qrc">
+    <normaloff>:/newPrefix/icons8-play-50.png</normaloff>:/newPrefix/icons8-play-50.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(40, 40, 40);</string>
@@ -82,11 +86,6 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
     </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>
-      <selectedon>icons8-menu-24.png</selectedon>:/newPrefix/icons8-menu-24.png</iconset>
-    </property>
    </column>
    <column>
     <property name="text">
@@ -94,10 +93,6 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     </property>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
-    </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
     </property>
    </column>
    <column>
@@ -107,10 +102,6 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
     </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
-    </property>
    </column>
    <column>
     <property name="text">
@@ -118,10 +109,6 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     </property>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
-    </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
     </property>
    </column>
    <column>
@@ -131,21 +118,13 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
     </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
-    </property>
    </column>
    <column>
     <property name="text">
-     <string>Times Play</string>
+     <string>Times Played</string>
     </property>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
-    </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
     </property>
    </column>
    <column>
@@ -155,21 +134,13 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
     </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
-    </property>
    </column>
    <column>
     <property name="text">
-     <string>Comment</string>
+     <string>Comments</string>
     </property>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
-    </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
     </property>
    </column>
    <column>
@@ -178,10 +149,6 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     </property>
     <property name="textAlignment">
      <set>AlignLeading|AlignVCenter</set>
-    </property>
-    <property name="icon">
-     <iconset resource="sources.qrc">
-      <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
     </property>
    </column>
   </widget>
@@ -219,11 +186,227 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <string>Export To Excel</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>78</x>
+     <y>131</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_6">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_7">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_8">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_9">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_10">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>130</y>
+     <width>21</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="sources.qrc">
+     <normaloff>:/newPrefix/icons8-menu-24.png</normaloff>:/newPrefix/icons8-menu-24.png</iconset>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>tableWidget</zorder>
   <zorder>label</zorder>
   <zorder>frame</zorder>
   <zorder>pushButton</zorder>
   <zorder>label_2</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>pushButton_3</zorder>
+  <zorder>pushButton_4</zorder>
+  <zorder>pushButton_5</zorder>
+  <zorder>pushButton_6</zorder>
+  <zorder>pushButton_7</zorder>
+  <zorder>pushButton_8</zorder>
+  <zorder>pushButton_9</zorder>
+  <zorder>pushButton_10</zorder>
  </widget>
  <resources>
   <include location="sources.qrc"/>

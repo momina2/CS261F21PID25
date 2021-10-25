@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>icons8-menu-24.png</file>
+    <file>icons8-export-excel-96.png</file>
+    <file>icons8-question-64.png</file>
+    <file>icons8-play-50.png</file>
+    <file>WhatsApp Image 2021-10-10 at 6.33.24 PM (2).jpeg</file>
+    <file>WhatsApp Image 2021-10-10 at 6.33.24 PM.jpeg</file>
+    <file>WhatsApp Image 2021-10-10 at 6.33.24 PM3.jpeg</file>
+  </qresource>
+</RCC>
