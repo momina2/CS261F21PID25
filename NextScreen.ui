@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>window</class>
+ <widget class="QDialog" name="window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -20,7 +20,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(40, 40, 40);</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="playlistical">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -38,7 +38,7 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     <string>Playlistical</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="main">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -152,7 +152,7 @@ font: 16pt &quot;Times New Roman&quot;;</string>
     </property>
    </column>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="excelimport">
    <property name="geometry">
     <rect>
      <x>820</x>
@@ -170,7 +170,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="export_2">
    <property name="geometry">
     <rect>
      <x>810</x>
@@ -186,7 +186,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <string>Export To Excel</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="Song">
    <property name="geometry">
     <rect>
      <x>78</x>
@@ -209,7 +209,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="Album">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -232,7 +232,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="Genre">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -255,7 +255,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="Artist">
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -278,7 +278,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_6">
+  <widget class="QPushButton" name="Likes">
    <property name="geometry">
     <rect>
      <x>480</x>
@@ -301,7 +301,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_7">
+  <widget class="QPushButton" name="TimesPLayed">
    <property name="geometry">
     <rect>
      <x>580</x>
@@ -324,7 +324,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_8">
+  <widget class="QPushButton" name="Duration">
    <property name="geometry">
     <rect>
      <x>680</x>
@@ -347,7 +347,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_9">
+  <widget class="QPushButton" name="Comment">
    <property name="geometry">
     <rect>
      <x>780</x>
@@ -370,7 +370,7 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_10">
+  <widget class="QPushButton" name="Year">
    <property name="geometry">
     <rect>
      <x>880</x>
@@ -394,19 +394,19 @@ image: url(:/newPrefix/icons8-export-excel-96.png);</string>
    </property>
   </widget>
   <zorder>tableWidget</zorder>
-  <zorder>label</zorder>
-  <zorder>frame</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>label_2</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>pushButton_4</zorder>
-  <zorder>pushButton_5</zorder>
-  <zorder>pushButton_6</zorder>
-  <zorder>pushButton_7</zorder>
-  <zorder>pushButton_8</zorder>
-  <zorder>pushButton_9</zorder>
-  <zorder>pushButton_10</zorder>
+  <zorder>playlistical</zorder>
+  <zorder>main</zorder>
+  <zorder>excelimport</zorder>
+  <zorder>export_2</zorder>
+  <zorder>Song</zorder>
+  <zorder>Album</zorder>
+  <zorder>Genre</zorder>
+  <zorder>Artist</zorder>
+  <zorder>Likes</zorder>
+  <zorder>TimesPLayed</zorder>
+  <zorder>Duration</zorder>
+  <zorder>Comment</zorder>
+  <zorder>Year</zorder>
  </widget>
  <resources>
   <include location="sources.qrc"/>
