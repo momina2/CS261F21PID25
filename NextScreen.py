@@ -1,9 +1,5 @@
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMenu
-
-
 class NextPage(object):
     def add_menu(self, data, menu_obj):
         if isinstance(data, dict):
@@ -88,8 +84,7 @@ class NextPage(object):
         self.export_2.setGeometry(QtCore.QRect(810, 60, 81, 20))
         self.export_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.export_2.setObjectName("export_2")
-        states_cities = ['Sort Ascending ','Sort Descending ','Filter'
-        ]
+        states_cities = ['Sort Ascending ','Sort Descending ','Filter']
         #CREATING A DROPDOWN MENU 
         #AND ADDING SUBMENUS 
         menu = QMenu()
@@ -98,7 +93,6 @@ class NextPage(object):
         #DROPDOWN  MENU BUTTONS 
         self.Song = QtWidgets.QPushButton(window)
         self.Song.setMenu(menu)
-        
         self.Song.setGeometry(QtCore.QRect(78, 131, 21, 23))
         self.Song.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Song.setText("")
@@ -230,6 +224,6 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = QtWidgets.QDialog()
     ui = NextPage()
-    ui.setupUi(window)
+    ui.setupUi1(window)
     window.show()
     sys.exit(app.exec_())

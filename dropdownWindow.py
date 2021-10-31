@@ -12,18 +12,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_Form(object):
-        
-    
     def setupUi(self, Form):
         
         Form.setObjectName("Form")
         Form.setWindowModality(QtCore.Qt.ApplicationModal)
         Form.setEnabled(True)
         Form.resize(264, 392)
-        Form.setAutoFillBackground(True)
+        Form.setAutoFillBackground(False)
         flags = QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint )
         Form.setWindowFlags(flags)
-        Form.setStyleSheet("\n""background-color: rgb(40, 40, 40);")
+        Form.setStyleSheet("\n""background-color: rgb(255,255,255);")
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(20, 10, 181, 21))
         font = QtGui.QFont()
@@ -32,6 +30,7 @@ class Ui_Form(object):
         self.label.setFont(font)
         self.label.setStyleSheet("color: rgb(255, 255, 255);")
         self.label.setObjectName("label")
+       
         self.comboBox = QtWidgets.QComboBox(Form)
         self.comboBox.setGeometry(QtCore.QRect(20, 50, 161, 31))
         font = QtGui.QFont()
@@ -40,11 +39,14 @@ class Ui_Form(object):
         self.comboBox.setFont(font)
         self.comboBox.setStyleSheet("background-color: rgb(255, 255, 255);\n""")
         self.comboBox.setObjectName("comboBox")
+   
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+       
+
         self.textEdit = QtWidgets.QTextEdit(Form)
         self.textEdit.setGeometry(QtCore.QRect(20, 100, 181, 31))
         font = QtGui.QFont()
@@ -72,7 +74,8 @@ class Ui_Form(object):
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Form)
         self.pushButton_2.setGeometry(QtCore.QRect(120, 350, 81, 31))
-        self.pushButton_2.setStyleSheet("background-color: rgb(204, 204, 204);")
+        self.pushButton_2.setStyleSheet("background-color: rgb(7, 8, 38);\n"
+"color: rgb(255, 255, 255);")
         self.pushButton_2.setObjectName("pushButton_2")
         self.comboBox_5 = QtWidgets.QComboBox(Form)
         self.comboBox_5.setGeometry(QtCore.QRect(20, 150, 111, 31))
@@ -103,20 +106,23 @@ class Ui_Form(object):
         self.comboBox_3.addItem("")
         self.comboBox_3.addItem("")
         self.comboBox_3.addItem("")
+      
+        
         self.comboBox_2 = QtWidgets.QComboBox(Form)
         self.comboBox_2.setGeometry(QtCore.QRect(20, 200, 161, 31))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(11)
         self.comboBox_2.setFont(font)
-        self.comboBox_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"")
+        self.comboBox_2.setStyleSheet("background-color: rgb(255, 255, 255);\n""")
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
+       
+        
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -130,7 +136,7 @@ class Ui_Form(object):
         self.comboBox.setItemText(3, _translate("Form", "Does not Contains"))
         self.comboBox.setItemText(4, _translate("Form", "Starts With"))
         self.pushButton.setText(_translate("Form", "Filter"))
-        self.pushButton_2.setText(_translate("Form", "Cancel"))
+        self.pushButton_2.setText(_translate("Form", "Clear"))
         self.comboBox_5.setItemText(0, _translate("Form", "Add"))
         self.comboBox_5.setItemText(1, _translate("Form", "Or"))
         self.comboBox_3.setItemText(0, _translate("Form", "Merge Sort"))
