@@ -2,7 +2,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import time
 from NextScreen import NextPage
 class Ui_Dialog(object):
+        
+        
     def setupUi(self, Dialog):
+     
         Dialog.setObjectName("Dialog")
         Dialog.resize(907, 547)
         icon = QtGui.QIcon()
@@ -119,6 +122,7 @@ class Ui_Dialog(object):
         self.pushButton.setText(_translate("Dialog", "Stop"))
         self.pushButton_2.setText(_translate("Dialog", "Resume"))
     import sources_rc
+    
     def run(self, n):
         self.w = None
         for i in range(n):

@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMenu
+from dropdownWindow import Ui_Form
+import csv
 class NextPage(object):
     def add_menu(self, data, menu_obj):
         if isinstance(data, dict):
@@ -79,6 +81,7 @@ class NextPage(object):
 "background-color: rgb(40, 40, 40);\n"
 "image: url(:/newPrefix/icons8-export-excel-96.png);")
         self.excelimport.setText("")
+        self.excelimport.clicked.connect(on_excelimport_clicked)
         self.excelimport.setObjectName("excelimport")
         self.export_2 = QtWidgets.QLabel(window)
         self.export_2.setGeometry(QtCore.QRect(810, 60, 81, 20))
@@ -94,6 +97,8 @@ class NextPage(object):
         self.Song = QtWidgets.QPushButton(window)
         self.Song.setMenu(menu)
         self.Song.setGeometry(QtCore.QRect(78, 131, 21, 23))
+
+        
         self.Song.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Song.setText("")
         icon1 = QtGui.QIcon()
@@ -216,6 +221,23 @@ class NextPage(object):
         item = self.tableWidget.horizontalHeaderItem(8)
         item.setText(_translate("window", "Year"))
         self.export_2.setText(_translate("window", "Export To Excel"))
+    
+#Code to load data into table 
+fileName = 'songsData.csv'
+def loadCsv(self, fileName):
+    fileName = 'songsData.csv'
+    with open(fileName, "r") as fileInput:
+        for row in csv.reader(fileInput):    
+            items = [
+                QtGui.QStandardItem(field)
+                for field in row
+            ]
+            self.model.appendRow(items)
+
+def on_excelimport_clicked(self):
+    fileName = 'songsData.csv'
+    self.loadCsv(self.fileName)
+    
 import sources_rc
 
 
