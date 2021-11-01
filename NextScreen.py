@@ -1,4 +1,4 @@
-from _typeshed import Self
+# from _typeshed import Self
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMenu, QTableWidgetItem, QTableWidget
 from dropdownWindow import Ui_Form
@@ -226,36 +226,36 @@ class NextPage(object):
     
 #Code to load data into table 
 fileName = 'songsData.csv'
-def openFile():
-    try: 
-        Self.all_data = pd.read('songsData.csv')
-        NumRows = len(Self.all_data.index)
-        Self.tableWidget.setColumnCount(len(Self.all_data.columns))
-        Self.tableWidget.setRowCount(NumRows)
-        Self.tableWidget.setHorizontalHeaderLabels(Self.all_data.columns)
-        for i in range(NumRows):
-            for j in range(len(Self.all_data.columns)):
-                Self.tableWidget.setItems(i,j,QTableWidgetItem(str(Self.all_data.iat[i,j])))
+# def openFile():
+#     try: 
+#         Self.all_data = pd.read('songsData.csv')
+#         NumRows = len(Self.all_data.index)
+#         Self.tableWidget.setColumnCount(len(Self.all_data.columns))
+#         Self.tableWidget.setRowCount(NumRows)
+#         Self.tableWidget.setHorizontalHeaderLabels(Self.all_data.columns)
+#         for i in range(NumRows):
+#             for j in range(len(Self.all_data.columns)):
+#                 Self.tableWidget.setItems(i,j,QTableWidgetItem(str(Self.all_data.iat[i,j])))
         
-        Self.tableWidget.resizeColumnsToContents()
-        Self.tableWidget.resizeRowsToContents()
-    except:
-        print("error occured")
+#         Self.tableWidget.resizeColumnsToContents()
+#         Self.tableWidget.resizeRowsToContents()
+#     except:
+#         print("error occured")
         
         
-# def loadCsv(self, fileName):
-#     fileName = 'songsData.csv'
-#     with open(fileName, "r") as fileInput:
-#         for row in csv.reader(fileInput):    
-#             items = [
-#                 QtGui.QStandardItem(field)
-#                 for field in row
-#             ]
-#             self.model.appendRow(items)
+def loadCsv(self, fileName):
+    fileName = 'songsData.csv'
+    with open(fileName, "r") as fileInput:
+        for row in csv.reader(fileInput):    
+            items = [
+                QtGui.QStandardItem(field)
+                for field in row
+            ]
+            self.model.appendRow(items)
 
-# def on_excelimport_clicked(self):
-#     fileName = 'songsData.csv'
-#     self.loadCsv(self.fileName)
+def on_excelimport_clicked(self):
+    fileName = 'songsData.csv'
+    self.loadCsv(self.fileName)
     
 import sources_rc
 
