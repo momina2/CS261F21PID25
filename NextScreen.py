@@ -1,7 +1,9 @@
+from _typeshed import Self
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMenu
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMenu, QTableWidgetItem, QTableWidget
 from dropdownWindow import Ui_Form
 import csv
+import pandas as pd
 class NextPage(object):
     def add_menu(self, data, menu_obj):
         if isinstance(data, dict):
@@ -50,38 +52,38 @@ class NextPage(object):
         self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
-        self.tableWidget.setHorizontalHeaderItem(8, item)
+        # self.tableWidget.setHorizontalHeaderItem(0, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(1, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(2, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(3, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(4, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(5, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(6, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(7, item)
+        # item = QtWidgets.QTableWidgetItem()
+        # item.setTextAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignVCenter)
+        # self.tableWidget.setHorizontalHeaderItem(8, item)
         self.excelimport = QtWidgets.QPushButton(window)
         self.excelimport.setGeometry(QtCore.QRect(820, 10, 51, 51))
         self.excelimport.setStyleSheet("\n"
 "background-color: rgb(40, 40, 40);\n"
 "image: url(:/newPrefix/icons8-export-excel-96.png);")
         self.excelimport.setText("")
-        self.excelimport.clicked.connect(on_excelimport_clicked)
+#        self.excelimport.clicked.connect()
         self.excelimport.setObjectName("excelimport")
         self.export_2 = QtWidgets.QLabel(window)
         self.export_2.setGeometry(QtCore.QRect(810, 60, 81, 20))
@@ -203,40 +205,57 @@ class NextPage(object):
         window.setWindowTitle(_translate("window", "Playlistical"))
         self.playlistical.setText(_translate("window", "Playlistical"))
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("window", "Song Title"))
-        item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("window", "Album"))
-        item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("window", "Genre"))
-        item = self.tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("window", "Artist"))
-        item = self.tableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("window", "Likes"))
-        item = self.tableWidget.horizontalHeaderItem(5)
-        item.setText(_translate("window", "Times Played"))
-        item = self.tableWidget.horizontalHeaderItem(6)
-        item.setText(_translate("window", "Duration"))
-        item = self.tableWidget.horizontalHeaderItem(7)
-        item.setText(_translate("window", "Comments"))
-        item = self.tableWidget.horizontalHeaderItem(8)
-        item.setText(_translate("window", "Year"))
+        # item.setText(_translate("window", "Song Title"))
+        # item = self.tableWidget.horizontalHeaderItem(1)
+        # item.setText(_translate("window", "Album"))
+        # item = self.tableWidget.horizontalHeaderItem(2)
+        # item.setText(_translate("window", "Genre"))
+        # item = self.tableWidget.horizontalHeaderItem(3)
+        # item.setText(_translate("window", "Artist"))
+        # item = self.tableWidget.horizontalHeaderItem(4)
+        # item.setText(_translate("window", "Likes"))
+        # item = self.tableWidget.horizontalHeaderItem(5)
+        # item.setText(_translate("window", "Times Played"))
+        # item = self.tableWidget.horizontalHeaderItem(6)
+        # item.setText(_translate("window", "Duration"))
+        # item = self.tableWidget.horizontalHeaderItem(7)
+        # item.setText(_translate("window", "Comments"))
+        # item = self.tableWidget.horizontalHeaderItem(8)
+        # item.setText(_translate("window", "Year"))
         self.export_2.setText(_translate("window", "Export To Excel"))
     
 #Code to load data into table 
 fileName = 'songsData.csv'
-def loadCsv(self, fileName):
-    fileName = 'songsData.csv'
-    with open(fileName, "r") as fileInput:
-        for row in csv.reader(fileInput):    
-            items = [
-                QtGui.QStandardItem(field)
-                for field in row
-            ]
-            self.model.appendRow(items)
+def openFile():
+    try: 
+        Self.all_data = pd.read('songsData.csv')
+        NumRows = len(Self.all_data.index)
+        Self.tableWidget.setColumnCount(len(Self.all_data.columns))
+        Self.tableWidget.setRowCount(NumRows)
+        Self.tableWidget.setHorizontalHeaderLabels(Self.all_data.columns)
+        for i in range(NumRows):
+            for j in range(len(Self.all_data.columns)):
+                Self.tableWidget.setItems(i,j,QTableWidgetItem(str(Self.all_data.iat[i,j])))
+        
+        Self.tableWidget.resizeColumnsToContents()
+        Self.tableWidget.resizeRowsToContents()
+    except:
+        print("error occured")
+        
+        
+# def loadCsv(self, fileName):
+#     fileName = 'songsData.csv'
+#     with open(fileName, "r") as fileInput:
+#         for row in csv.reader(fileInput):    
+#             items = [
+#                 QtGui.QStandardItem(field)
+#                 for field in row
+#             ]
+#             self.model.appendRow(items)
 
-def on_excelimport_clicked(self):
-    fileName = 'songsData.csv'
-    self.loadCsv(self.fileName)
+# def on_excelimport_clicked(self):
+#     fileName = 'songsData.csv'
+#     self.loadCsv(self.fileName)
     
 import sources_rc
 
