@@ -191,7 +191,7 @@ class NextPage(object):
     def run(self):
         import pandas as pd
         try:
-            self.all_data = pd.read_csv('data.csv')
+            self.all_data = pd.read_csv('songsData.csv')
         except:
             print("An Error Occured!")
         
@@ -207,7 +207,7 @@ class NextPage(object):
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.resizeRowsToContents()
 
-    def fun1():
+    def fun1(self):
         b=DriverWindow()
         b.fun
        
