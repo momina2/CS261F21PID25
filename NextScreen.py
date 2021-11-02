@@ -1,14 +1,21 @@
 
 import sources_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import  QMenu, QTableWidgetItem
+from PyQt5.QtWidgets import  QMenu, QTableWidgetItem,QInputDialog
 from dropdownWindow import Ui_Form
 from Driver import DriverWindow
 import csv
 import pandas as pd
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 
 
 class NextPage(object):
+    def __init__(self):
+        self.count=0
+    def clicked_btn(self):
+        print('clicked')
+
     def add_menu(self, data, menu_obj):
         # if isinstance(data, dict):
         #     for k, v in data.items():
@@ -23,6 +30,15 @@ class NextPage(object):
             action.setIconVisibleInMenu(False)
 
     def setupUi1(self, window):
+
+        #DisplayButton
+        self.btn = QtWidgets.QPushButton(window)
+        self.btn.setGeometry(QtCore.QRect(200, 70, 81, 20))
+        self.btn.setObjectName("btn")
+        self.btn.clicked.connect(self.getTextInputDialog)
+
+
+
         window.setObjectName("window")
         window.resize(901, 561)
         icon = QtGui.QIcon()
@@ -43,7 +59,7 @@ class NextPage(object):
         self.main.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main.setObjectName("main")
         self.tableWidget = QtWidgets.QTableWidget(window)
-        self.tableWidget.setGeometry(QtCore.QRect(0, 130, 961, 431))
+        self.tableWidget.setGeometry(QtCore.QRect(0, 130, 961, 561))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setBold(False)
@@ -51,7 +67,7 @@ class NextPage(object):
         font.setWeight(50)
         self.tableWidget.setFont(font)
         self.tableWidget.setStyleSheet("tableWidget->setStyleSheet(\"QTableView::item:selected { color:white; background:#000000; font-weight:900; }\"\n"
-                                       "                           \"QTableCornerButton::section { background-color:#232326; }\"\n"
+                                       "                           \"QTableCornerButton::section { background-color:#FFFFFF; }\"\n"
                                        "                           \"QHeaderView::section { color:white; background-color:#232326; }\");")
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()
@@ -70,17 +86,17 @@ class NextPage(object):
         self.export_2.setGeometry(QtCore.QRect(810, 60, 81, 20))
         self.export_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.export_2.setObjectName("export_2")
-        states_cities = ['Sort Ascending ', 'Sort Descending ', 'Filter']
+        sorting = ['Sort Ascending ', 'Sort Descending ', 'Filter']
         # CREATING A DROPDOWN MENU
         # AND ADDING SUBMENUS
         menu = QMenu()
-        menu.triggered.connect(self.fun1)
-        self.add_menu(states_cities, menu)
+        menu.triggered.connect(lambda x: self.fun1(x.text()))
+        self.add_menu(sorting, menu)
         # DROPDOWN  MENU BUTTONS
         self.Song = QtWidgets.QPushButton(window)
+
         self.Song.setMenu(menu)
         self.Song.setGeometry(QtCore.QRect(78, 131, 21, 23))
-
         self.Song.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Song.setText("")
         icon1 = QtGui.QIcon()
@@ -180,6 +196,8 @@ class NextPage(object):
         self.retranslateUi(window)
         QtCore.QMetaObject.connectSlotsByName(window)
 
+    
+
     def retranslateUi(self, window):
         _translate = QtCore.QCoreApplication.translate
         window.setWindowTitle(_translate("window", "Playlistical"))
@@ -206,10 +224,32 @@ class NextPage(object):
 
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.resizeRowsToContents()
+    
 
-    def fun1():
-        b=DriverWindow()
-        b.fun
+    def fun1(self,text):
+        
+        if(text=='Filter'):
+            self.window=QtWidgets.QMainWindow()
+            self.ui=Ui_Form()
+            self.ui.setupUi(self.window)
+            self.window.show()
+        if(text=='Sort Ascending '):
+            self.count=self.getTextInputDialog()
+            self.tableWidget.sortItems(self.count, QtCore.Qt.AscendingOrder)
+        if(text=='Sort Descending '):
+            self.count=self.getTextInputDialog()
+            self.tableWidget.sortItems(self.count, QtCore.Qt.DescendingOrder)
+    def getTextInputDialog(self):
+        integer , pressed = QInputDialog.getInt(None, "Input Integer","Number:", 0, 0, 9, 1)
+        if pressed:
+         return integer
+       
+    
+    
+    
+			
+      
+
        
 
 
@@ -220,7 +260,7 @@ if __name__ == "__main__":
     ui = NextPage()
     ui.setupUi1(window)
     window.show()
-    p=NextPage()
-    p.run
+    # p=NextPage()
+    # p.run
     sys.exit(app.exec_())
     

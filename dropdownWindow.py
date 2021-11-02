@@ -1,5 +1,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QCoreApplication
 
 
 class Ui_Form(object):
@@ -64,6 +65,7 @@ class Ui_Form(object):
 "color: rgb(255, 255, 255);")
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Form)
+        self.pushButton_2.clicked.connect(QCoreApplication.instance().quit)
         self.pushButton_2.setGeometry(QtCore.QRect(120, 350, 81, 31))
         self.pushButton_2.setStyleSheet("background-color: rgb(7, 8, 38);\n"
 "color: rgb(255, 255, 255);")
