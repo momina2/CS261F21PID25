@@ -209,7 +209,7 @@ class NextPage(object):
     def run(self):
         import pandas as pd
         try:
-            self.all_data = pd.read_csv('data.csv')
+            self.all_data = pd.read_csv('songsData.csv')
         except:
             print("An Error Occured!")
         
@@ -245,10 +245,6 @@ class NextPage(object):
          return integer
        
     
-    
-    
-			
-      
 
        
 
