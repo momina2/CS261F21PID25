@@ -13,6 +13,7 @@ TPList=[]
 DList=[]
 CList=[]   
 
+#filtering Funtion
 
 def filter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
     # print(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4)
@@ -21,9 +22,10 @@ def filter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
     for i in range(0, len(SongsList.Namelist)):
         if(SongsList.Namelist[i][x].__contains__('G')):
             print(SongsList.Namelist[i])
-            Algorithm.indexArray.append(i)
+            Algorithm.indexArray.append(i) #storing index of values that in filtered
     addFilteredList()
-   
+
+#filtered data in to seperate list
 def addFilteredList():
    
     for i in range(0, len(Algorithm.indexArray)):
@@ -37,7 +39,7 @@ def addFilteredList():
         DList.append(SongsList.durationlist[Algorithm.indexArray[i]])
         CList.append(SongsList.Commentslist[Algorithm.indexArray[i]])
     listtodataframe()
-    
+#List to DataFrame
 def listtodataframe():
     df = pd.DataFrame(list(zip(nList, aList, gList, arList, lList, YList, TPList, DList, CList)),
     columns =['name', 'album', 'genre', 'artists', 'Likes', 'year', 'TimesPlayed', 'duration','Comments'])

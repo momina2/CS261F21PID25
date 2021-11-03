@@ -22,8 +22,11 @@ class SongsList():
   durationlist = []
   Commentslist = []
   yearlist = []
+
+#reading csv and creating seperate list for each columns 
 def addToList():
     df = pd.read_csv ('data.csv')
+    #kyu k duration ka column nam galat parh raha tha
     df = df.rename(columns={'duration ': 'duration'})
     SongsList.Namelist = df["name"].tolist()
     SongsList.albumlist = df["album"].tolist()
@@ -38,9 +41,7 @@ def addToList():
 if __name__ == "__main__":
     songs=SongsList("", "", "", "", "", "", "", "", "")   
     addToList()
-    # for j in range (len(songs.list)):
-    #    print(songs.list[j].name)
-    
+   
    
 
 

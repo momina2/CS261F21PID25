@@ -156,6 +156,9 @@ class Ui_Form(object):
         self.comboBox_2.setItemText(3, _translate("Form", "Contains"))
         self.comboBox_2.setItemText(4, _translate("Form", "Does not Contains"))
         self.comboBox_2.setItemText(5, _translate("Form", "Starts With"))
+
+    #when filter button is pressed
+    #return input value to funtion for filtering
     def FilterFun(self):
         firstTextBox = self.textEdit.toPlainText()
         secondTextBox= self.textEdit_2.toPlainText()

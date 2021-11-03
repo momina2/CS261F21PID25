@@ -2,8 +2,7 @@
 import sources_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import  QMenu, QTableWidgetItem,QInputDialog
-from dropdownWindow import Ui_Form
-import csv
+from dropdownWindow import *
 import pandas as pd
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -12,15 +11,9 @@ from PyQt5.QtCore import *
 class NextPage(object):
     def __init__(self):
         self.count=0
-    def clicked_btn(self):
-        print('clicked')
-
+    
+     #MENU 
     def add_menu(self, data, menu_obj):
-        # if isinstance(data, dict):
-        #     for k, v in data.items():
-        #         sub_menu = QMenu(k, menu_obj)
-        #         menu_obj.addMenu(sub_menu)
-        #         self.add_menu(v, sub_menu)
         if isinstance(data, list):
             for element in data:
                 self.add_menu(element, menu_obj)
@@ -35,9 +28,6 @@ class NextPage(object):
         self.btn.setGeometry(QtCore.QRect(200, 70, 81, 20))
         self.btn.setObjectName("btn")
         self.btn.clicked.connect(self.getTextInputDialog)
-
-
-
         window.setObjectName("window")
         window.resize(901, 561)
         icon = QtGui.QIcon()
@@ -89,7 +79,7 @@ class NextPage(object):
         # CREATING A DROPDOWN MENU
         # AND ADDING SUBMENUS
         menu = QMenu()
-        menu.triggered.connect(lambda x: self.fun1(x.text()))
+        menu.triggered.connect(lambda x: self.FilterMenu(x.text()))
         self.add_menu(sorting, menu)
         # DROPDOWN  MENU BUTTONS
         self.Song = QtWidgets.QPushButton(window)
@@ -206,6 +196,7 @@ class NextPage(object):
 # Code to load data into table
 
     def run(self):
+        #directdata from csv file to table
         import pandas as pd
         try:
             self.all_data = pd.read_csv('data.csv')
@@ -225,8 +216,7 @@ class NextPage(object):
         self.tableWidget.resizeRowsToContents()
     
 
-    def fun1(self,text):
-        
+    def FilterMenu(self,text):
         if(text=='Filter'):
             self.window=QtWidgets.QMainWindow()
             self.ui=Ui_Form()
@@ -243,11 +233,6 @@ class NextPage(object):
         if pressed:
          return integer
        
-    
-
-       
-
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -255,7 +240,5 @@ if __name__ == "__main__":
     ui = NextPage()
     ui.setupUi1(window)
     window.show()
-    # p=NextPage()
-    # p.run
     sys.exit(app.exec_())
     
