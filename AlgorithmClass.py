@@ -12,307 +12,55 @@ YList=[]
 TPList=[]
 DList=[]
 CList=[]   
-
 #filtering Funtion
 #Functions For Contains with contains 
 def filter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    # print(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4)
-    x=0
-    if Combo1=="Contains" and Combo2 == "Add" and Combo3 == "Starts With":
-        for i in range(0, len(SongsList.Namelist)):
-            if(SongsList.Namelist[i].__contains__(FirstFilter) and SongsList.Namelist[i][x].__contains__(SecondText) ):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) #storing index of values that in filtered
-            addFilteredList()
+   
+    if Combo1=="Contains":
+        ContainsFun(FirstFilter,0)
+    if Combo1=="Starts With":
+        startaWith(FirstFilter.upper(),0)
+    if(Combo2=='Or'):
+         if Combo3=="Contains":
+          ContainsFun(SecondText,0)
+         if Combo3=="Starts With": 
+          startaWith(SecondText.upper(),0)
+    else:
+        if Combo3=="Contains":
+          ContainsFun(SecondText,1)
+        if Combo3=="Starts With": 
+          startaWith(SecondText.upper(),1)
 
-#AND Filter with contains
-def andFilter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    if Combo1 =="Contains" and Combo2 == "Add" and Combo3 == "Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) and SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
+def startaWith(text,flag):
 
-#OR Filter with conatins    
-def orFilter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    if Combo1 =="Contains" and Combo2 == "Or" and Combo3 == "Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) or SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
+    for i in range(0, len(SongsList.Namelist)):
+        if(SongsList.Namelist[i].startswith(text) ):
+            print(SongsList.Namelist[i])
+            Algorithm.indexArray.append(i) #storing index of values that in filtered
+    addFilteredList()
+    # if(flag==1):
+    #     Algorithm.indexArray=[]
+    #     for i in range(0, len(nList)):
+    #         if(Algorithm.nlist[i].startswith(text) ):
+    #            print(Algorithm.nlist[i])
+    #            Algorithm.indexArray.append(i)
+    #     addFilteredList()
 
-#FUNCTIONS WITH CONTAINS AND/OR EQUALS TO
-def contains_or_EqualTo(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Or" and Combo3 == "is Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) or SongsList.Namelist[i] == SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-def contains_and_EqualTo(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Add" and Combo3 == "is Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) and SongsList.Namelist[i] == SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-#FUNCTIONS WITH CONTAINS AND/OR EQUALS TO
-def contains_or_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Add" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) and SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-def contains_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Or" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) or SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-#FUNCTIONS WITH CONTAINS AND/OR Does not Contains
-def contains_or_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Add" and Combo3 == "Does not Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) and SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-def contains_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Or" and Combo3 == "Does not Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i].__contains__(FirstFilter) or SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
+def ContainsFun(text,flag):
     
-#FUNCTIONS WITH NOT EQUAL TO AND/OR IS EQUAL TO
-def equal_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 !="is not Equal to" and Combo2 == "Add" and Combo3 == "is Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i] == FirstFilter and SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
- 
-def equal_or_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is not Equal to" and Combo2 == "Or" and Combo3 == "is Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i]!= FirstFilter or SongsList.Namelist[i] == SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()        
+    for i in range(0, len(SongsList.Namelist)):
+        if(SongsList.Namelist[i].__contains__(text) ):
+            print(SongsList.Namelist[i])
+            Algorithm.indexArray.append(i)
+    addFilteredList()
+    # if(flag==1):
+    #     Algorithm.indexArray=[]
+    #     for i in range(0, len(nList)):
+    #         if(Algorithm.nlist[i].startswith(text) ):
+    #            print(Algorithm.nlist[i])
+    #            Algorithm.indexArray.append(i)
+    #     addFilteredList()
 
-#FUNCTIONS WITH NOT EQUAL TO AND/OR NOT EQUAL TO
-def notEqual_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is not Equal to" and Combo2 == "Add" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i] != FirstFilter and SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-def notEqual_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is not Equal to" and Combo2 == "Or" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i] != FirstFilter or SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-
-#FUNCTION FOR NOT EQUAL TO AND/OR CONTAINS
-def notEqual_or_Contains(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is not Equal to" and Combo2 == "Or" and Combo3 == "Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i] != FirstFilter or SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-def notEqual_and_Contains(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is not Equal to" and Combo2 == "Add" and Combo3 == "Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i] != FirstFilter and SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-#FUNCTION FOR NOT EQUAL AND/OR STARTS WITH
-def notEqual_or_startswith(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is not Equal to" and Combo2 == "Add" and Combo3 == "Starts With":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i] != FirstFilter and SongsList.Namelist[i][x].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-    
-def notEqual_and_startswith(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is not Equal to" and Combo2 == "Or" and Combo3 == "Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i] != FirstFilter or SongsList.Namelist[i][x].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-    
-#FUNCTIONS FOR STARTS WITH AND/OR CONTAINS
-def startswith_and_contains(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Add" and Combo3 == "Starts With":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) and SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-    
-def startswith_or_contains(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Or" and Combo3 == "Contains":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) or SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-#FUNCTIONS FOR STARTS WITH AND/OR EQUAL TO
-def StartsWith_OR_equal(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Or" and Combo3 == "is Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) or SongsList.Namelist[i] == SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-def StartsWith_AND_equal(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Add" and Combo3 == "is Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) and SongsList.Namelist[i] == SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-#FUNCTIONS FOR STARTS WITH AND/OR NOT EQUAL TO
-def StartsWith_OR_NotEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Or" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) or SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-def StartsWith_AND_equal(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Add" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) and SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-#FUNCTIONS FOR STARTS WITH AND/OR STARTS WITH
-def StartsWith_OR_equal(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Or" and Combo3 == "Starts With":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) or SongsList.Namelist[i][x].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-def StartsWith_AND_equal(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Starts With" and Combo2 == "Add" and Combo3 == "Starts With":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i][x].__contains__(FirstFilter) and SongsList.Namelist[i][x].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-        
-
-#FUNCTIONS WITH EQUAL TO AND/OR CONTAINS
-def contains_or_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Or" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i]== FirstFilter or SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-def contains_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Add" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i]== FirstFilter and SongsList.Namelist[i].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-#FUNCTIONS WITH EQUAL TO AND/OR NOT EQUAL
-def equal_or_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is Equal to" and Combo2 == "Or" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i]== FirstFilter or SongsList.Namelist[i] != SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-def equal_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Add" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i]== FirstFilter and SongsList.Namelist[i]!=SecondText):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-
-
-#FUNCTIONS WITH EQUAL TO AND/OR STARTS WITH
-def equal_or_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="is Equal to" and Combo2 == "Or" and Combo3 == "Starts With":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i]== FirstFilter or SongsList.Namelist[i][x].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-
-def equal_and_notEqual(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-    x=0
-    if Combo1 =="Contains" and Combo2 == "Add" and Combo3 == "is not Equal to":
-        for i in range(0, len(SongsList.Namelist)):
-            if (SongsList.Namelist[i]== FirstFilter and SongsList.Namelist[i][x].__contains__(SecondText)):
-                print(SongsList.Namelist[i])
-                Algorithm.indexArray.append(i) 
-        addFilteredList()
-    
 
       
 #filtered data in to seperate list
@@ -333,13 +81,13 @@ def addFilteredList():
 def listtodataframe():
     df = pd.DataFrame(list(zip(nList, aList, gList, arList, lList, YList, TPList, DList, CList)),
     columns =['name', 'album', 'genre', 'artists', 'Likes', 'year', 'TimesPlayed', 'duration','Comments'])
-    print(df["album"])
-
+    # print(df["album"])
 
 
 if __name__ == "__main__":
     addToList()
-    filter("a","a","a","a","a","a",)
+    # orFilter("a","a","a","a","a","a")
+    filter("a","a","a","a","a","a")
     
     
 

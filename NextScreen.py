@@ -22,14 +22,19 @@ class NextPage(object):
             action.setIconVisibleInMenu(False)
 
     def setupUi1(self, window):
-
         #DisplayButton
         self.btn = QtWidgets.QPushButton(window)
-        self.btn.setGeometry(QtCore.QRect(200, 70, 81, 20))
+        self.btn.setGeometry(QtCore.QRect(40, 90, 100, 25))
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(10)
+        self.btn.setFont(font)
+        self.btn.setStyleSheet('QPushButton {background-color: rgb(29, 182, 83); color: white;}')
+        self.btn.setText("Load Data")
         self.btn.setObjectName("btn")
-        self.btn.clicked.connect(self.getTextInputDialog)
+        self.btn.clicked.connect(self.run)
         window.setObjectName("window")
-        window.resize(901, 561)
+        window.resize(1000, 590)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/newPrefix/icons8-play-50.png"),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -48,13 +53,19 @@ class NextPage(object):
         self.main.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main.setObjectName("main")
         self.tableWidget = QtWidgets.QTableWidget(window)
-        self.tableWidget.setGeometry(QtCore.QRect(0, 130, 961, 561))
+        self.tableWidget.setGeometry(QtCore.QRect(0, 130, 1000, 561))
+
+        self.tableWidget.resizeColumnsToContents()
         font = QtGui.QFont()
+        
         font.setFamily("Times New Roman")
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
         self.tableWidget.setFont(font)
+        # self.tableWidget.setColumnWidth(0, 1)
+        # self.tableWidget.setColumnWidth(1, 10)
+        # self.tableWidget.setColumnWidth(2, 10)
         self.tableWidget.setStyleSheet("tableWidget->setStyleSheet(\"QTableView::item:selected { color:white; background:#000000; font-weight:900; }\"\n"
                                        "                           \"QTableCornerButton::section { background-color:#FFFFFF; }\"\n"
                                        "                           \"QHeaderView::section { color:white; background-color:#232326; }\");")
@@ -64,15 +75,15 @@ class NextPage(object):
 
 
         self.excelimport = QtWidgets.QPushButton(window)
-        self.excelimport.clicked.connect(self.run)
-        self.excelimport.setGeometry(QtCore.QRect(820, 10, 51, 51))
+        
+        self.excelimport.setGeometry(QtCore.QRect(870, 10, 51, 51))
         self.excelimport.setStyleSheet("\n"
                                        "background-color: rgb(40, 40, 40);\n"
                                        "image: url(:/newPrefix/icons8-export-excel-96.png);")
         self.excelimport.setText("")
         self.excelimport.setObjectName("excelimport")
         self.export_2 = QtWidgets.QLabel(window)
-        self.export_2.setGeometry(QtCore.QRect(810, 60, 81, 20))
+        self.export_2.setGeometry(QtCore.QRect(860, 60, 81, 20))
         self.export_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.export_2.setObjectName("export_2")
         sorting = ['Sort Ascending ', 'Sort Descending ', 'Filter']
@@ -85,7 +96,7 @@ class NextPage(object):
         self.Song = QtWidgets.QPushButton(window)
 
         self.Song.setMenu(menu)
-        self.Song.setGeometry(QtCore.QRect(78, 131, 21, 23))
+        self.Song.setGeometry(QtCore.QRect(60, 131, 21, 23))
         self.Song.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Song.setText("")
         icon1 = QtGui.QIcon()
@@ -97,7 +108,7 @@ class NextPage(object):
 
         self.Album = QtWidgets.QPushButton(window)
         self.Album.setMenu(menu)
-        self.Album.setGeometry(QtCore.QRect(180, 130, 21, 23))
+        self.Album.setGeometry(QtCore.QRect(340, 130, 21, 23))
         self.Album.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Album.setIcon(icon1)
         self.Album.setFlat(True)
@@ -105,7 +116,7 @@ class NextPage(object):
 
         self.Genre = QtWidgets.QPushButton(window)
         self.Genre.setMenu(menu)
-        self.Genre.setGeometry(QtCore.QRect(280, 130, 21, 23))
+        self.Genre.setGeometry(QtCore.QRect(460, 130, 21, 23))
         self.Genre.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Genre.setText("")
         self.Genre.setIcon(icon1)
@@ -114,7 +125,7 @@ class NextPage(object):
 
         self.Artist = QtWidgets.QPushButton(window)
         self.Artist.setMenu(menu)
-        self.Artist.setGeometry(QtCore.QRect(380, 130, 21, 23))
+        self.Artist.setGeometry(QtCore.QRect(580, 130, 21, 23))
         self.Artist.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Artist.setText("")
         self.Artist.setIcon(icon1)
@@ -123,7 +134,7 @@ class NextPage(object):
 
         self.Likes = QtWidgets.QPushButton(window)
         self.Likes.setMenu(menu)
-        self.Likes.setGeometry(QtCore.QRect(480, 130, 21, 23))
+        self.Likes.setGeometry(QtCore.QRect(720, 130, 21, 23))
         self.Likes.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Likes.setText("")
         self.Likes.setIcon(icon1)
@@ -132,7 +143,7 @@ class NextPage(object):
 
         self.TimesPLayed = QtWidgets.QPushButton(window)
         self.TimesPLayed.setMenu(menu)
-        self.TimesPLayed.setGeometry(QtCore.QRect(580, 130, 21, 23))
+        self.TimesPLayed.setGeometry(QtCore.QRect(780, 130, 21, 23))
         self.TimesPLayed.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.TimesPLayed.setText("")
         self.TimesPLayed.setIcon(icon1)
@@ -141,7 +152,7 @@ class NextPage(object):
 
         self.Duration = QtWidgets.QPushButton(window)
         self.Duration.setMenu(menu)
-        self.Duration.setGeometry(QtCore.QRect(680, 130, 21, 23))
+        self.Duration.setGeometry(QtCore.QRect(840, 130, 21, 23))
         self.Duration.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Duration.setText("")
         self.Duration.setIcon(icon1)
@@ -150,7 +161,7 @@ class NextPage(object):
 
         self.Comment = QtWidgets.QPushButton(window)
         self.Comment.setMenu(menu)
-        self.Comment.setGeometry(QtCore.QRect(780, 130, 21, 23))
+        self.Comment.setGeometry(QtCore.QRect(890, 130, 21, 23))
         self.Comment.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Comment.setText("")
         self.Comment.setIcon(icon1)
@@ -159,7 +170,7 @@ class NextPage(object):
 
         self.Year = QtWidgets.QPushButton(window)
         self.Year.setMenu(menu)
-        self.Year.setGeometry(QtCore.QRect(880, 130, 21, 23))
+        self.Year.setGeometry(QtCore.QRect(950, 130, 21, 23))
         self.Year.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.Year.setText("")
         self.Year.setIcon(icon1)
