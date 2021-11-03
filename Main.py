@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
+from Driver import *
 from NextScreen import NextPage
 class Ui_Dialog(object):
         
@@ -92,7 +93,7 @@ class Ui_Dialog(object):
 "border-radius: 10px;\n"
 "    background-color: rgb(22, 140, 63);\n"
 "}")
-        self.progressBar.setProperty("value", 24)
+        self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName("progressBar")
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(330, 120, 251, 251))
@@ -124,6 +125,7 @@ class Ui_Dialog(object):
     import sources_rc
     
     def run(self, n):
+        addToList()
         self.w = None
         for i in range(n):
           time.sleep(0.01)
@@ -132,6 +134,7 @@ class Ui_Dialog(object):
         self.ui=NextPage()
         self.ui.setupUi1(self.window)
         self.window.show()
+        
 
 
 if __name__ == "__main__":

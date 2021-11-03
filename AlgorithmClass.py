@@ -1,36 +1,54 @@
+from numpy import imag
 from NextScreen import *
+from Driver import *
 class Algorithm():
-    def __init__(self,name,album,genre,artist,likes,timesPlayed,duration,comment,year):
-       self.name=name
-       self.album=album
-       self.genre=genre
-       self.artist=artist
-       self.likes=likes
-       self.timesPlayed=timesPlayed
-       self.duration=duration
-       self.comment=comment
-       self.year=year
-    
-    # def addingColumnsinArrays(self):
-        # self.tableWidget = QtWidgets.QTableWidget(window)
-        # nrows = self.tableWidget.rowCount()
-        # group = []
- 
-        # for row in range(0,nrows):
-        #     item = self.Table.item(row, 2)
-        #     item_text = item.text()
- 
-        #     group.append(item)
- 
-        # print(group)
+    indexArray=[]
+nList=[]
+aList=[]
+gList=[]
+arList=[]
+lList=[]
+YList=[]
+TPList=[]
+DList=[]
+CList=[]   
 
-# arr = ["cat","bat","mat"]
-# temp = 0
-# for i in range(0,len(arr)):
-#     for j in range(0,len(arr)):
-#         if arr[j] > arr[i]: #this is in ascending order agar descending krna ho toh condition ulat dein gay
-#             temp = arr[i]
-#             arr[i] = arr[j]
-#             arr[j] = temp
-# print(arr)
-       
+
+def filter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
+    # print(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4)
+    # if Combo1=="Contains":
+    x=0
+    for i in range(0, len(SongsList.Namelist)):
+        if(SongsList.Namelist[i][x].__contains__('G')):
+            print(SongsList.Namelist[i])
+            Algorithm.indexArray.append(i)
+    addFilteredList()
+   
+def addFilteredList():
+   
+    for i in range(0, len(Algorithm.indexArray)):
+        nList.append(SongsList.Namelist[Algorithm.indexArray[i]])
+        aList.append(SongsList.albumlist[Algorithm.indexArray[i]])
+        gList.append(SongsList.genrelist[Algorithm.indexArray[i]])
+        arList.append(SongsList.artistslist[Algorithm.indexArray[i]])
+        lList.append(SongsList.Likeslist[Algorithm.indexArray[i]])
+        YList.append(SongsList.yearlist[Algorithm.indexArray[i]])
+        TPList.append(SongsList.TimesPlayedlist[Algorithm.indexArray[i]])
+        DList.append(SongsList.durationlist[Algorithm.indexArray[i]])
+        CList.append(SongsList.Commentslist[Algorithm.indexArray[i]])
+    listtodataframe()
+    
+def listtodataframe():
+    df = pd.DataFrame(list(zip(nList, aList, gList, arList, lList, YList, TPList, DList, CList)),
+    columns =['name', 'album', 'genre', 'artists', 'Likes', 'year', 'TimesPlayed', 'duration','Comments'])
+    print(df["album"])
+
+
+
+if __name__ == "__main__":
+    addToList()
+    filter("a","a","a","a","a","a",)
+    
+    
+
+    

@@ -1,6 +1,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QCoreApplication
+from AlgorithmClass import *
 
 
 class Ui_Form(object):
@@ -20,7 +21,7 @@ class Ui_Form(object):
         font.setFamily("Georgia")
         font.setPointSize(10)
         self.label.setFont(font)
-        self.label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label.setStyleSheet("color: rgb(0,0,0);")
         self.label.setObjectName("label")
        
         self.comboBox = QtWidgets.QComboBox(Form)
@@ -31,7 +32,7 @@ class Ui_Form(object):
         self.comboBox.setFont(font)
         self.comboBox.setStyleSheet("background-color: rgb(255, 255, 255);\n""")
         self.comboBox.setObjectName("comboBox")
-   
+        self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -41,6 +42,7 @@ class Ui_Form(object):
 
         self.textEdit = QtWidgets.QTextEdit(Form)
         self.textEdit.setGeometry(QtCore.QRect(20, 100, 181, 31))
+        
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(12)
@@ -56,7 +58,9 @@ class Ui_Form(object):
         self.textEdit_2.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.textEdit_2.setObjectName("textEdit_2")
         self.pushButton = QtWidgets.QPushButton(Form)
+
         self.pushButton.setGeometry(QtCore.QRect(20, 350, 81, 31))
+        self.pushButton.clicked.connect(self.FilterFun)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(10)
@@ -79,6 +83,7 @@ class Ui_Form(object):
         self.comboBox_5.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "")
         self.comboBox_5.setObjectName("comboBox_5")
+        self.comboBox_5.addItem("")
         self.comboBox_5.addItem("")
         self.comboBox_5.addItem("")
         self.comboBox_3 = QtWidgets.QComboBox(Form)
@@ -114,6 +119,7 @@ class Ui_Form(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
        
         
 
@@ -123,15 +129,17 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         self.label.setText(_translate("Form", "Show items with value that:"))
-        self.comboBox.setItemText(0, _translate("Form", "is Equal to"))
-        self.comboBox.setItemText(1, _translate("Form", "is not Equal to"))
-        self.comboBox.setItemText(2, _translate("Form", "Contains"))
-        self.comboBox.setItemText(3, _translate("Form", "Does not Contains"))
-        self.comboBox.setItemText(4, _translate("Form", "Starts With"))
+        self.comboBox.setItemText(0, _translate("Form", "None"))
+        self.comboBox.setItemText(1, _translate("Form", "is Equal to"))
+        self.comboBox.setItemText(2, _translate("Form", "is not Equal to"))
+        self.comboBox.setItemText(3, _translate("Form", "Contains"))
+        self.comboBox.setItemText(4, _translate("Form", "Does not Contains"))
+        self.comboBox.setItemText(5, _translate("Form", "Starts With"))
         self.pushButton.setText(_translate("Form", "Filter"))
         self.pushButton_2.setText(_translate("Form", "Clear"))
-        self.comboBox_5.setItemText(0, _translate("Form", "Add"))
-        self.comboBox_5.setItemText(1, _translate("Form", "Or"))
+        self.comboBox_5.setItemText(0, _translate("Form", "None"))
+        self.comboBox_5.setItemText(1, _translate("Form", "Add"))
+        self.comboBox_5.setItemText(2, _translate("Form", "Or"))
         self.comboBox_3.setItemText(0, _translate("Form", "Merge Sort"))
         self.comboBox_3.setItemText(1, _translate("Form", "Insertion Sort"))
         self.comboBox_3.setItemText(2, _translate("Form", "Selection Sort"))
@@ -141,11 +149,21 @@ class Ui_Form(object):
         self.comboBox_3.setItemText(6, _translate("Form", "Counting Sort"))
         self.comboBox_3.setItemText(7, _translate("Form", "Shell Sort"))
         self.comboBox_3.setItemText(8, _translate("Form", "Radix Sort"))
-        self.comboBox_2.setItemText(0, _translate("Form", "is Equal to"))
-        self.comboBox_2.setItemText(1, _translate("Form", "is not Equal to"))
-        self.comboBox_2.setItemText(2, _translate("Form", "Contains"))
-        self.comboBox_2.setItemText(3, _translate("Form", "Does not Contains"))
-        self.comboBox_2.setItemText(4, _translate("Form", "Starts With"))
+
+        self.comboBox_2.setItemText(0, _translate("Form", "None"))
+        self.comboBox_2.setItemText(1, _translate("Form", "is Equal to"))
+        self.comboBox_2.setItemText(2, _translate("Form", "is not Equal to"))
+        self.comboBox_2.setItemText(3, _translate("Form", "Contains"))
+        self.comboBox_2.setItemText(4, _translate("Form", "Does not Contains"))
+        self.comboBox_2.setItemText(5, _translate("Form", "Starts With"))
+    def FilterFun(self):
+        firstTextBox = self.textEdit.toPlainText()
+        secondTextBox= self.textEdit_2.toPlainText()
+        content = self.comboBox.currentText()
+        content4 = self.comboBox_2.currentText()
+        content2 = self.comboBox_3.currentText()
+        content3 = self.comboBox_5.currentText()
+        filter(firstTextBox,secondTextBox,content,content3,content4,content2)
 
 
 if __name__ == "__main__":
