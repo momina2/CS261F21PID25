@@ -167,6 +167,14 @@ class Ui_Form(object):
         content2 = self.comboBox_3.currentText()
         content3 = self.comboBox_5.currentText()
         filter(firstTextBox,secondTextBox,content,content3,content4,content2)
+        self.showdialog()
+    def showdialog(self):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setIcon(QtWidgets.QMessageBox.Information)
+        msgBox.setText("Informative") 
+        msgBox.setWindowTitle("Check Your Terminal")
+        msgBox.setStandardButtons(QtWidgets.QMessageBox.Cancel)
+        msgBox.exec()
 
 
 if __name__ == "__main__":

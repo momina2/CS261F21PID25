@@ -128,7 +128,7 @@ class Ui_Dialog(object):
         addToList()
         self.w = None
         for i in range(n):
-          time.sleep(0.01)
+          time.sleep(0.1)
           self.progressBar.setValue(i+1)
         self.window=QtWidgets.QMainWindow()
         self.ui=NextPage()

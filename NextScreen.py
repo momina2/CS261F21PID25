@@ -1,7 +1,7 @@
 
 import sources_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import  QMenu, QTableWidgetItem,QInputDialog
+from PyQt5.QtWidgets import  QDialog, QMenu, QMessageBox, QPushButton, QTableWidgetItem,QInputDialog
 from dropdownWindow import *
 import pandas as pd
 from PyQt5.QtGui import *
@@ -24,7 +24,7 @@ class NextPage(object):
     def setupUi1(self, window):
         #DisplayButton
         self.btn = QtWidgets.QPushButton(window)
-        self.btn.setGeometry(QtCore.QRect(40, 90, 100, 25))
+        self.btn.setGeometry(QtCore.QRect(850, 90, 100, 25))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(10)
@@ -66,16 +66,14 @@ class NextPage(object):
         # self.tableWidget.setColumnWidth(0, 1)
         # self.tableWidget.setColumnWidth(1, 10)
         # self.tableWidget.setColumnWidth(2, 10)
-        self.tableWidget.setStyleSheet("tableWidget->setStyleSheet(\"QTableView::item:selected { color:white; background:#000000; font-weight:900; }\"\n"
-                                       "                           \"QTableCornerButton::section { background-color:#FFFFFF; }\"\n"
-                                       "                           \"QHeaderView::section { color:white; background-color:#232326; }\");")
-        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setStyleSheet("color: black;"
+            "background-color: white")
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignVCenter)
 
 
         self.excelimport = QtWidgets.QPushButton(window)
-        
+        self.excelimport.clicked.connect(self.showdialog)
         self.excelimport.setGeometry(QtCore.QRect(870, 10, 51, 51))
         self.excelimport.setStyleSheet("\n"
                                        "background-color: rgb(40, 40, 40);\n"
@@ -86,6 +84,13 @@ class NextPage(object):
         self.export_2.setGeometry(QtCore.QRect(860, 60, 81, 20))
         self.export_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.export_2.setObjectName("export_2")
+        self.runtime = QtWidgets.QLabel(window)
+        self.runtime.setGeometry(QtCore.QRect(100, 80, 81, 20))
+        self.runtime.setStyleSheet("color: rgb(255, 255, 255);")
+        self.runtime.setObjectName("runtime")
+        self.runtime.setStyleSheet("color: rgb(255, 255, 255);\n"
+                                        "font: 70 14pt \"Times New Roman\";\n"
+                                        "font: 14pt \"Times New Roman\";")
         sorting = ['Sort Ascending ', 'Sort Descending ', 'Filter']
         # CREATING A DROPDOWN MENU
         # AND ADDING SUBMENUS
@@ -203,6 +208,7 @@ class NextPage(object):
         window.setWindowTitle(_translate("window", "Playlistical"))
         self.playlistical.setText(_translate("window", "Playlistical"))
         self.export_2.setText(_translate("window", "Export To Excel"))
+        self.runtime.setText(_translate("window", ": Run Time  "))
 
 # Code to load data into table
 
@@ -240,9 +246,17 @@ class NextPage(object):
             self.count=self.getTextInputDialog()
             self.tableWidget.sortItems(self.count, QtCore.Qt.DescendingOrder)
     def getTextInputDialog(self):
-        integer , pressed = QInputDialog.getInt(None, "Input Integer","Number:", 0, 0, 9, 1)
+        integer , pressed = QInputDialog.getInt(None, "Input Column Number","Column:", 0, 0, 9, 1)
         if pressed:
          return integer
+    def showdialog(self):
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("For More Updated Version Stay Tuned")
+        msgBox.setWindowTitle("Export to Excel")
+        msgBox.setStandardButtons(QMessageBox.Cancel)
+        msgBox.exec()
+      
        
 if __name__ == "__main__":
     import sys
