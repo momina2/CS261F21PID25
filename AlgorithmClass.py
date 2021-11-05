@@ -2,44 +2,71 @@ from PyQt5.QtWidgets import QTableWidget
 from numpy import imag
 from NextScreen import *
 from Driver import *
+import time
 class Algorithm():
     indexArray=[]
-nList=[]
-aList=[]
-gList=[]
-arList=[]
-lList=[]
-YList=[]
-TPList=[]
-DList=[]
-CList=[]   
+    nList=[]
+    aList=[]
+    gList=[]
+    arList=[]
+    lList=[]
+    YList=[]
+    TPList=[]
+    DList=[]
+    CList=[]   
+# def calculatingTime(start , end):
+#     return end - start
+
 #filtering Funtion
 #Functions For Contains with contains 
 def filter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
-   
+
     if Combo1=="Contains":
+        start = time.time()
         ContainsFun(FirstFilter,0)
+        end = time.time()
+        # calculatingTime(start,end)
+        
     if Combo1=="Starts With":
+        start = time.time()
         startaWith(FirstFilter.upper(),0)
+        end = time.time()
+        #calculatingTime(start,end)
+        
     if(Combo2=='Or'):
-         if Combo3=="Contains":
-          ContainsFun(SecondText,0)
-         if Combo3=="Starts With": 
-          startaWith(SecondText.upper(),0)
-    else:
+        start = time.time()
         if Combo3=="Contains":
-          ContainsFun(SecondText,1)
+            ContainsFun(SecondText,0)
+            end = time.time()
+            #calculatingTime(start, end)
+        
         if Combo3=="Starts With": 
-          startaWith(SecondText.upper(),1)
+            startaWith(SecondText.upper(),0)
+            end = time.time()
+            #calculatingTime(start , end)
+    else:
+        start = time.time()
+        if Combo3=="Contains":
+            ContainsFun(SecondText,1)
+            end = time.time()
+            #calculatingTime(start , end)
+        
+        if Combo3=="Starts With": 
+            startaWith(SecondText.upper(),1)
+            end = time.time()
+            #calculatingTime(start , end)
     
- 
+
 
 def startaWith(text,flag):
+    start = time.time()
     x=0
     for i in range(0, len(SongsList.Namelist)):
         if(SongsList.Namelist[i][x].startswith(text) ):
             print(SongsList.Namelist[i])
             Algorithm.indexArray.append(i) #storing index of values that in filtered
+            end =  time.time()
+           #calculatingTime(start,end)
     addFilteredList()
     # if(flag==1):
     #     Algorithm.indexArray=[]
@@ -50,11 +77,13 @@ def startaWith(text,flag):
     #     addFilteredList()
 
 def ContainsFun(text,flag):
-    
+    start = time.time()
     for i in range(0, len(SongsList.Namelist)):
         if(SongsList.Namelist[i].__contains__(text) ):
             print(SongsList.Namelist[i])
             Algorithm.indexArray.append(i)
+    end = time.time()
+    calculatingTime(start, end)
     addFilteredList()
     # if(flag==1):
     #     Algorithm.indexArray=[]
@@ -65,21 +94,21 @@ def ContainsFun(text,flag):
     #     addFilteredList()
 
 
-      
+    
 #filtered data in to seperate list
-def addFilteredList():
-   
-    for i in range(0, len(Algorithm.indexArray)):
-        nList.append(SongsList.Namelist[Algorithm.indexArray[i]])
-        aList.append(SongsList.albumlist[Algorithm.indexArray[i]])
-        gList.append(SongsList.genrelist[Algorithm.indexArray[i]])
-        arList.append(SongsList.artistslist[Algorithm.indexArray[i]])
-        lList.append(SongsList.Likeslist[Algorithm.indexArray[i]])
-        YList.append(SongsList.yearlist[Algorithm.indexArray[i]])
-        TPList.append(SongsList.TimesPlayedlist[Algorithm.indexArray[i]])
-        DList.append(SongsList.durationlist[Algorithm.indexArray[i]])
-        CList.append(SongsList.Commentslist[Algorithm.indexArray[i]])
-    listtodataframe()
+    def addFilteredList():
+
+        for i in range(0, len(Algorithm.indexArray)):
+            nList.append(SongsList.Namelist[Algorithm.indexArray[i]])
+            aList.append(SongsList.albumlist[Algorithm.indexArray[i]])
+            gList.append(SongsList.genrelist[Algorithm.indexArray[i]])
+            arList.append(SongsList.artistslist[Algorithm.indexArray[i]])
+            lList.append(SongsList.Likeslist[Algorithm.indexArray[i]])
+            YList.append(SongsList.yearlist[Algorithm.indexArray[i]])
+            TPList.append(SongsList.TimesPlayedlist[Algorithm.indexArray[i]])
+            DList.append(SongsList.durationlist[Algorithm.indexArray[i]])
+            CList.append(SongsList.Commentslist[Algorithm.indexArray[i]])
+        listtodataframe()
 #List to DataFrame
 def listtodataframe():
     df = pd.DataFrame(list(zip(nList, aList, gList, arList, lList, YList, TPList, DList, CList)),
@@ -87,6 +116,7 @@ def listtodataframe():
     # print(df["album"])
 
 def insertionSort(Array):
+    start = time.time()
     for i in range(1,len(Array)):
         key=Array[i]
         j=i-1
@@ -95,125 +125,136 @@ def insertionSort(Array):
             j=j-1
         Array[j+1]=key
     print(Array)
+    end = time.time()
+    #calculatingTime(start, end)
+    
 #Selection Sort
 def SelectionSort(arr):
-        for i in range(len(arr)):
-            min = i
-            for j in range(i+1, len(arr)):
-                if arr[min] > arr[j]:
-                    min = j   
-            arr[i], arr[min] = arr[min], arr[i]
+    start = time.time()
+    for i in range(len(arr)):
+        min = i
+        for j in range(i+1, len(arr)):
+            if arr[min] > arr[j]:
+                min = j   
+        arr[i], arr[min] = arr[min], arr[i]
+    end = time.time()     
+    #calculatingTime(start, end)
+    
 #bubble sort 
 def BubbleSort(arr):
+    start = time.time()
     n = len(arr)
     for i in range(n):
         for j in range(n - i - 1):
             if arr[j] > arr[j + 1]:
                 # sorting by using simultaneous assignment in python
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    end = time.time()     
+    #calculatingTime(start, end)
     return arr
+    
 #  Quicksort
 def partition(arr,l,h): 
-	i = ( l-1 )	
-	pivot = arr[h]	 # pivot 
+    i = ( l-1 )	
+    pivot = arr[h]	 # pivot 
+    for j in range(l , h):  
+        if arr[j] <= pivot: 
+            i = i+1
+            arr[i],arr[j] = arr[j],arr[i] 
 
-	for j in range(l , h):  
-		if arr[j] <= pivot: 
-			i = i+1
-			arr[i],arr[j] = arr[j],arr[i] 
-
-	arr[i+1],arr[h] = arr[h],arr[i+1] 
-	return ( i+1 ) 
+    arr[i+1],arr[h] = arr[h],arr[i+1] 
+    return ( i+1 ) 
 
 # Function to do Quick sort 
 def quickSort(arr,l,h): 
-	if l < h:  
-		pi = partition(arr,l,h) 
-		quickSort(arr, l, pi-1) 
-		quickSort(arr, pi+1, h) 
+    if l < h:  
+        pi = partition(arr,l,h) 
+        quickSort(arr, l, pi-1) 
+        quickSort(arr, pi+1, h) 
+
+
 
 #radix sort
 def radixCountSort(array, size, col, base):
 
-  output   = [0] * size
-  count    = [0] * (base + 1) 
-  basecount = ord('a') - 1 
+    output   = [0] * size
+    count    = [0] * (base + 1) 
+    basecount = ord('a') - 1 
 
-  for item in array: 
-    index = ord(item[col]) - basecount if col < len(item) else 0
-    count[index] += 1
+    for item in array: 
+        index = ord(item[col]) - basecount if col < len(item) else 0
+        count[index] += 1
 
-  for i in range(len(count)-1):  
-      count[i + 1] += count[i]
+    for i in range(len(count)-1):  
+        count[i + 1] += count[i]
 
-  for item in reversed(array):
-    index = ord(item[col]) - basecount if col < len(item) else 0
-    output[count[index] - 1] = item
-    count[index] -= 1
-
-  return output
+    for item in reversed(array):
+        index = ord(item[col]) - basecount if col < len(item) else 0
+        output[count[index] - 1] = item
+        count[index] -= 1
+    return output
 
 def RadixSort(array ):
-  cols = None
-  if not cols:
-    cols = len(max(array, key = len)) 
+    cols = None
+    if not cols:
+        cols = len(max(array, key = len)) 
 
-  for col in range(cols-1, -1, -1): 
-    array = radixCountSort(array, len(array), col, 26)
+    for col in range(cols-1, -1, -1): 
+        array = radixCountSort(array, len(array), col, 26)
 
-  return array 
+    return array 
 
 #counting sort
 def countSort(arr):
     # characters and initialize output array as 0
-	output = [0 for i in range(len(arr))]
+    output = [0 for i in range(len(arr))]
     # characters and initialize count array as 0
-	count = [0 for i in range(256)]
-	#Empty Sorted Array
-	SortedArray = ["" for _ in arr]
+    count = [0 for i in range(256)]
+    #Empty Sorted Array
+    SortedArray = ["" for _ in arr]
     # Store count of each character
-	for i in arr:
-		count[ord(i)] += 1
-	for i in range(256):
-		count[i] += count[i-1]
-	for i in range(len(arr)):
-		output[count[ord(arr[i])]-1] = arr[i]
-		count[ord(arr[i])] -= 1
+    for i in arr:
+        count[ord(i)] += 1
+    for i in range(256):
+        count[i] += count[i-1]
+    for i in range(len(arr)):
+        output[count[ord(arr[i])]-1] = arr[i]
+        count[ord(arr[i])] -= 1
 
-	for i in range(len(arr)):
-		SortedArray[i] = output[i]
-	return SortedArray
+    for i in range(len(arr)):
+        SortedArray[i] = output[i]
+    return SortedArray
 
 #heap sort
 
 def HeapInterval(arr, n, i):
-	largest = i 
-	l = 2 * i + 1	 
-	r = 2 * i + 2	
+    largest = i 
+    l = 2 * i + 1	 
+    r = 2 * i + 2	
 
-	# greater than root
-	if l < n and arr[i] < arr[l]:
-		largest = l
+    # greater than root
+    if l < n and arr[i] < arr[l]:
+        largest = l
 
-	# greater than root
-	if r < n and arr[largest] < arr[r]:
-		largest = r
+    # greater than root
+    if r < n and arr[largest] < arr[r]:
+        largest = r
 
-	# Change root
-	if largest != i:
-		arr[i],arr[largest] = arr[largest],arr[i] # swap
-		HeapInterval(arr, n, largest)
+    # Change root
+    if largest != i:
+        arr[i],arr[largest] = arr[largest],arr[i] # swap
+        HeapInterval(arr, n, largest)
 
 def HeapSort(arr):
-	n = len(arr)
+    n = len(arr)
     # Build a maxheap.
-	for i in range(n // 2 - 1, -1, -1):
-		HeapInterval(arr, n, i)
+    for i in range(n // 2 - 1, -1, -1):
+        HeapInterval(arr, n, i)
 
-	# One by one extract elements
-	for i in range(n-1, 0, -1):
-		arr[i], arr[0] = arr[0], arr[i] # swap
-		HeapInterval(arr, i, 0)
+    # One by one extract elements
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i] # swap
+        HeapInterval(arr, i, 0)
 
 #shell sort
 

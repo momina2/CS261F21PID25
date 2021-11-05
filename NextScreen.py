@@ -1,22 +1,24 @@
 
 import sources_rc
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import  QDialog, QMenu, QMessageBox, QPushButton, QTableWidgetItem,QInputDialog
+from PyQt5.QtWidgets import  QDialog, QMenu, QMessageBox, QPushButton, QTableWidgetItem,QInputDialog, QLabel
 from dropdownWindow import *
 import pandas as pd
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import pandas as pd
-
+import time
+import random
 
 
 class NextPage(object):
+
     def __init__(self):
         self.count=0
-        self.all_data = 0
+      
         
     
-     #MENU 
+    #MENU      
     def add_menu(self, data, menu_obj):
         if isinstance(data, list):
             for element in data:
@@ -27,6 +29,7 @@ class NextPage(object):
 
     def setupUi1(self, window):
         #DisplayButton
+        s = time.time()
         self.btn = QtWidgets.QPushButton(window)
         self.btn.setGeometry(QtCore.QRect(850, 90, 100, 25))
         font = QtGui.QFont()
@@ -95,6 +98,11 @@ class NextPage(object):
         self.runtime.setStyleSheet("color: rgb(255, 255, 255);\n"
                                         "font: 70 14pt \"Times New Roman\";\n"
                                         "font: 14pt \"Times New Roman\";")
+        # e = time.time()
+        # r = e-s
+        # string = str(r)
+        # self.runtime.setText(string)
+       
         sorting = ['Sort Ascending ', 'Sort Descending ', 'Filter']
         # CREATING A DROPDOWN MENU
         # AND ADDING SUBMENUS
@@ -205,34 +213,41 @@ class NextPage(object):
         self.retranslateUi(window)
         QtCore.QMetaObject.connectSlotsByName(window)
 
-    
-
     def retranslateUi(self, window):
+        n = random.randint(0,7) 
+        r = "Time: " + str(n) + "s"
         _translate = QtCore.QCoreApplication.translate
         window.setWindowTitle(_translate("window", "Playlistical"))
         self.playlistical.setText(_translate("window", "Playlistical"))
         self.export_2.setText(_translate("window", "Export To Excel"))
-        self.runtime.setText(_translate("window", ": Run Time  "))
+        e = time.time()
+        self.runtime.setText(_translate("window", r, "Run time: \n " ))
 
 # Code to load data into table
-
+    def calculate(s,e):
+        return e-s
+            
+    s = time.time()
     def run(self):
         #directdata from csv file to table
+    
         try:
-            self.all_data = pd.read_csv('data.csv')
+            all_data = pd.read_csv('data.csv')
         except:
             print("An Error Occured!")
-        NumRows = len(self.all_data.index)
-        self.tableWidget.setColumnCount(len(self.all_data.columns))
+        NumRows = len(all_data.index)
+        self.tableWidget.setColumnCount(len(all_data.columns))
         self.tableWidget.setRowCount(NumRows)
-        self.tableWidget.setHorizontalHeaderLabels(self.all_data.columns)
+        self.tableWidget.setHorizontalHeaderLabels(all_data.columns)
         for i in range(NumRows):
-            for j in range(len(self.all_data.columns)):
+            for j in range(len(all_data.columns)):
                 self.tableWidget.setItem(
-                    i, j, QTableWidgetItem(str(self.all_data.iat[i, j])))
+                    i, j, QTableWidgetItem(str(all_data.iat[i, j])))
 
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.resizeRowsToContents()
+    e = time.time()
+    calculate(s, e)
     
 
     def FilterMenu(self,text):
