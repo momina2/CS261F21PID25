@@ -6,11 +6,15 @@ from dropdownWindow import *
 import pandas as pd
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+import pandas as pd
+
 
 
 class NextPage(object):
     def __init__(self):
         self.count=0
+        self.all_data = 0
+        
     
      #MENU 
     def add_menu(self, data, menu_obj):
@@ -214,12 +218,10 @@ class NextPage(object):
 
     def run(self):
         #directdata from csv file to table
-        import pandas as pd
         try:
             self.all_data = pd.read_csv('data.csv')
         except:
             print("An Error Occured!")
-        
         NumRows = len(self.all_data.index)
         self.tableWidget.setColumnCount(len(self.all_data.columns))
         self.tableWidget.setRowCount(NumRows)

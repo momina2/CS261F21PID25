@@ -35,9 +35,9 @@ def filter(FirstFilter,SecondText,Combo1,Combo2,Combo3,Combo4):
  
 
 def startaWith(text,flag):
-
+    x=0
     for i in range(0, len(SongsList.Namelist)):
-        if(SongsList.Namelist[i].startswith(text) ):
+        if(SongsList.Namelist[i][x].startswith(text) ):
             print(SongsList.Namelist[i])
             Algorithm.indexArray.append(i) #storing index of values that in filtered
     addFilteredList()
@@ -231,6 +231,22 @@ def shellSort(array, n):
         interval //= 2
 
 
+#implementing algorithms
+def algorithms(Combo4, arr):
+    low = 0
+    high = len(arr)
+    switcher = {
+        0: "Merge Sort",
+        1: insertionSort(arr),
+        2: SelectionSort(arr),
+        3: BubbleSort(arr),
+        4: quickSort(arr, low, high),
+        5: HeapSort(arr),
+        6: countSort(arr),
+        7: shellSort(arr),
+        8: RadixSort(arr),
+    }
+    return switcher.get(Combo4, "nothing")
 
 
 if __name__ == "__main__":
